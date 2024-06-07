@@ -6,7 +6,7 @@
 
 ### What is it?
 
-**Lucide Icons for AvaloniaUI** is a library that allows you to integrate over 1400 modern and elegant icons into your AvaloniaUI projects. This library offers a wide range of customizable icons to enhance the user interface of your applications.
+**Lucide Icons for AvaloniaUI** is a library that allows you to integrate over 1400 modern and elegant icons into your AvaloniaUI projects. This library offers a wide range of icons to enhance the user interface of your applications.
 
 ### What is it for?
 
@@ -31,5 +31,9 @@ dotnet add package Lucide.AvaloniaUI
 Here is an example of how to use Lucide icons in an AvaloniaUI project:
 
 ```axaml
-<Lucide Icon="Youtube" StrokeBrush="Blue" StrokeThinkness="1.5" Width="30" Height="30"/>
+<Lucide Icon="Youtube" StrokeBrush="Blue" StrokeThickness="1.5" Width="30" Height="30"/>
 ```
+
+### Credit
+- [AvaloniaUI](https://www.avaloniaui.net)
+- [Lucide](https://www.lucide.dev)
