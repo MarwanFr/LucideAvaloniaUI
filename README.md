@@ -15,10 +15,10 @@ This library is ideal for:
 - Adding high-quality and scalable icons to your projects.
 - Using modern and open-source icons in your interfaces.
 
+### Installation
+
 > [!WARNING]
 > This library currently only works with AvaloniaUI version 11.1.0-beta2 and not with any earlier versions.
-
-### Installation
 
 To install the library, you can use NuGet with the following command:
 
