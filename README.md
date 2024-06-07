@@ -1,6 +1,6 @@
 # Lucide Icons for AvaloniaUI
 
-![Lucide Icons for AvaloniaUI](./image/Card.png)
+![Lucide Icons for AvaloniaUI](./image/Card.webp)
 
 ## Over 1400 icons for AvaloniaUI
 
