@@ -18,7 +18,7 @@
     <RepositoryUrl>https://github.com/MarwanFr/LucideAvaloniaUI/</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>LucideAvalonia</PackageId>
-    <Version>1.1.0</Version>
+    <Version>1.2.0</Version>
     <PackageTags>avalonia;icons;icon;ui;lucide;avaloniaui</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
