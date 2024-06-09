@@ -1,4 +1,4 @@
-namespace LucideAvalonia.Controls.Enum;
+namespace LucideAvalonia.Enum;
 
 public enum LucideIconNames
 {
