@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:system="clr-namespace:System;assembly=System.Runtime"
              xmlns:lucideAvalonia="clr-namespace:LucideAvalonia"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             Width="24" Height="24"
              x:Class="LucideAvalonia.Lucide">
 
     <UserControl.Resources>
@@ -20,7 +20,6 @@
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <Image Source="{Binding IconSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type lucideAvalonia:Lucide}}}"
-           Width="24" Height="24"/>
+    <Image Source="{Binding IconSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type lucideAvalonia:Lucide}}}"/>
     
 </UserControl>
