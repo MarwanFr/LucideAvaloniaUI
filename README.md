@@ -1,5 +1,6 @@
 # Lucide Icons for AvaloniaUI
 [![NuGet Version](https://img.shields.io/nuget/v/LucideAvalonia)](https://www.nuget.org/packages/LucideAvalonia)
+[![GitHub License](https://img.shields.io/github/license/MarwanFr/LucideAvaloniaUI)](https://github.com/MarwanFr/LucideAvaloniaUI/blob/main/LICENSE)
 
 ![Lucide Icons for AvaloniaUI](./image/Banner.webp)
 
