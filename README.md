@@ -29,10 +29,15 @@ dotnet add package LucideAvalonia
 
 ### Usage
 
-Integrating Lucide Icons into your AvaloniaUI project is straightforward. Below is an example demonstrating how to add a YouTube icon to your XAML file:
+To use the Lucide Icons in your AvaloniaUI project, add the following namespace declaration to the header of your AXAML file:
+```axaml
+xmlns:lucideAvalonia="clr-namespace:LucideAvalonia;assembly=LucideAvalonia"
+```
+
+Integrating Lucide Icons into your AvaloniaUI project is straightforward. Below is an example demonstrating how to add a YouTube icon to your AXAML file:
 
 ```axaml
-<Lucide Icon="Youtube" StrokeBrush="Blue" StrokeThickness="1.5" Width="22" Height="22"/>
+<lucideAvalonia:Lucide Icon="Youtube" StrokeBrush="Red" StrokeThickness="1.5" Width="22" Height="22"/>
 ```
 
 You can customize the appearance of the icons using various properties:
