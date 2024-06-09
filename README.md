@@ -1,4 +1,5 @@
 # Lucide Icons for AvaloniaUI
+![NuGet Version](https://img.shields.io/nuget/v/LucideAvalonia)
 
 ![Lucide Icons for AvaloniaUI](./image/Card.webp)
 
