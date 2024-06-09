@@ -2,27 +2,36 @@
 
   <!-- Basic project configuration -->
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework> <!-- Target framework version -->
-    <ImplicitUsings>enable</ImplicitUsings> <!-- Enable implicit usings -->
-    <Nullable>enable</Nullable> <!-- Enable nullable reference types -->
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <!-- NuGet package information -->
   <PropertyGroup>
     <PackageIcon>icon.png</PackageIcon>
-    <Title>LucideAvalonia</Title> 
+    <Title>LucideAvalonia</Title>
     <Authors>MarwanFr</Authors>
-    <Description>A library for AvaloniaUI that integrates Lucide icons into your Avalonia applications.</Description> <!-- Package description -->
+    <Description>A library for AvaloniaUI that integrates Lucide icons into your Avalonia applications.</Description>
     <Copyright>MarwanFr</Copyright>
     <PackageProjectUrl>https://github.com/MarwanFr/LucideAvaloniaUI/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/MarwanFr/LucideAvaloniaUI/</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>LucideAvalonia</PackageId>
-    <Version>1.0.0</Version>
+    <Version>1.1.0</Version>
+    <PackageTags>avalonia;icons;icon;ui;lucide;avaloniaui</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
-    <ItemGroup>
-      <PackageReference Include="Avalonia" Version="11.1.0-beta1" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.1.0-beta1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="icon.png">
+      <Pack>True</Pack>
+      <PackagePath>icon.png</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>

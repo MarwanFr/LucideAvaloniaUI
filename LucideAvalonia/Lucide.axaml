@@ -1,0 +1,26 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:lucideAvalonia="clr-namespace:LucideAvalonia"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="LucideAvalonia.Lucide">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            
+            <SolidColorBrush x:Key="StrokeBrushLucide" Color="#F56565" /> <!-- StrokeBrush -->
+            <system:Double x:Key="StrokeThicknessLucide">2</system:Double> <!-- StrokeThickness -->
+            
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="avares://LucideAvalonia/Lucide/ResourcesIcons.axaml"/> <!-- Icons (DrawingImage) -->
+            </ResourceDictionary.MergedDictionaries>
+            
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Image Source="{Binding IconSource, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type lucideAvalonia:Lucide}}}"
+           Width="24" Height="24"/>
+    
+</UserControl>
