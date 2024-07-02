@@ -1,89 +1,107 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Data;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 using LucideAvalonia.Enum;
 
-namespace LucideAvalonia
+namespace LucideAvalonia;
+
+public partial class Lucide : UserControl
 {
-    public partial class Lucide : UserControl
+    public Lucide()
     {
-        public Lucide()
+        InitializeComponent();
+    }
+
+    // Initialize components
+    private void InitializeComponent()
+    {
+        AvaloniaXamlLoader.Load(this);
+    }
+
+    // Property for setting the icon source
+    public static readonly StyledProperty<object?> IconSourceProperty =
+        AvaloniaProperty.Register<Lucide, object?>("IconSource");
+
+    public object? IconSource
+    {
+        get => GetValue(IconSourceProperty);
+        set => SetValue(IconSourceProperty, value);
+    }
+
+    // Property for setting the icon name
+    public static readonly StyledProperty<LucideIconNames> IconProperty =
+        AvaloniaProperty.Register<Lucide, LucideIconNames>("Icon");
+
+    public LucideIconNames Icon
+    {
+        get => GetValue(IconProperty);
+        set
         {
-            InitializeComponent();
+            SetValue(IconProperty, value);
+            // Retrieve the resource corresponding to the icon name if resources are defined
+            var resource = Resources.MergedDictionaries.FirstOrDefault() as ResourceDictionary;
+            IconSource = resource?[Icon.ToString()];
         }
+    }
 
-        // Initialize components
-        private void InitializeComponent()
+    // Property for setting the icon stroke brush
+    public static readonly StyledProperty<IBrush?> StrokeBrushProperty =
+        AvaloniaProperty.Register<Lucide, IBrush?>(
+            nameof(StrokeBrush),
+            defaultBindingMode: BindingMode.TwoWay);
+
+    public IBrush? StrokeBrush
+    {
+        get => GetValue(StrokeBrushProperty);
+        set => SetValue(StrokeBrushProperty, value);
+    }
+
+    // Define a dependency property for the stroke thickness
+    private static readonly StyledProperty<double> StrokeThicknessProperty =
+        AvaloniaProperty.Register<Lucide, double>("StrokeThickness");
+
+    // Property to get or set the stroke thickness
+    public double StrokeThickness
+    {
+        get => GetValue(StrokeThicknessProperty);
+        set
         {
-            AvaloniaXamlLoader.Load(this);
+            SetValue(StrokeThicknessProperty, value);
+            UpdateStrokeThickness();
         }
+    }
 
-        // Property for setting the icon source
-        private static readonly StyledProperty<object?> IconSourceProperty = AvaloniaProperty.Register<Lucide, object?>(
-            "IconSource");
+    // Override the OnPropertyChanged method to handle property changes
+    protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
+    {
+        base.OnPropertyChanged(change);
 
-        public object? IconSource
-        {
-            get => GetValue(IconSourceProperty);
-            set => SetValue(IconSourceProperty, value);
-        }
+        // Check which property has changed and call the appropriate update method
+        if (change.Property == StrokeBrushProperty)
+            UpdateStrokeBrush();
+        else if (change.Property == StrokeThicknessProperty) UpdateStrokeThickness();
+    }
 
-        // Property for setting the icon name
-        public static readonly StyledProperty<LucideIconNames> IconProperty = AvaloniaProperty.Register<Lucide, LucideIconNames>(
-            "Icon");
+    // Method to update the stroke brush for the icon
+    private void UpdateStrokeBrush()
+    {
+        if (IconSource is not DrawingImage { Drawing: DrawingGroup drawingGroup }) return;
 
-        public LucideIconNames Icon
-        {
-            get => GetValue(IconProperty);
-            set
-            {
-                SetValue(IconProperty, value);
-                // If resources are defined, retrieve the resource corresponding to the icon name
-                var resource = Resources.MergedDictionaries.FirstOrDefault() as ResourceDictionary;
-                IconSource = resource?[Icon.ToString()];
-            }
-        }
+        var strokeBrush = StrokeBrush;
+        foreach (var drawing in drawingGroup.Children)
+            if (drawing is GeometryDrawing { Pen: Pen pen })
+                pen.Brush = strokeBrush;
+    }
 
-        // Property for setting the icon stroke brush
-        public IBrush? StrokeBrush
-        {
-            get => GetValue(BorderBrushProperty);
-            set
-            {
-                SetValue(BorderBrushProperty, value);
-                // Modify the color of all GeometryDrawing in the icon source
-                if (IconSource is not DrawingImage { Drawing: DrawingGroup drawingGroup }) return;
-                foreach (var drawing in drawingGroup.Children)
-                {
-                    if (drawing is GeometryDrawing { Pen: Pen pen })
-                    {
-                        pen.Brush = value;
-                    }
-                }
-            }
-        }
+    // Method to update the stroke thickness for the icon
+    private void UpdateStrokeThickness()
+    {
+        if (IconSource is not DrawingImage { Drawing: DrawingGroup drawingGroup }) return;
 
-        // Property for setting the icon stroke thickness
-        public static readonly StyledProperty<double> StrokeThicknessProperty = AvaloniaProperty.Register<Lucide, double>(
-            "StrokeThickness");
-
-        public double StrokeThickness
-        {
-            get => GetValue(StrokeThicknessProperty);
-            set
-            {
-                SetValue(StrokeThicknessProperty, value);
-                // Modify the stroke thickness of all GeometryDrawing in the icon source
-                if (IconSource is not DrawingImage { Drawing: DrawingGroup drawingGroup }) return;
-                foreach (var drawing in drawingGroup.Children)
-                {
-                    if (drawing is GeometryDrawing { Pen: Pen pen })
-                    {
-                        pen.Thickness = value;
-                    }
-                }
-            }
-        }
+        foreach (var drawing in drawingGroup.Children)
+            if (drawing is GeometryDrawing { Pen: Pen pen })
+                pen.Thickness = StrokeThickness;
     }
 }
