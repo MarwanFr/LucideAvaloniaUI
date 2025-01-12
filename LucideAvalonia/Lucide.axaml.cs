@@ -59,7 +59,7 @@ public partial class Lucide : UserControl
     }
 
     // Define a dependency property for the stroke thickness
-    private static readonly StyledProperty<double> StrokeThicknessProperty =
+    public static readonly StyledProperty<double> StrokeThicknessProperty =
         AvaloniaProperty.Register<Lucide, double>("StrokeThickness");
 
     // Property to get or set the stroke thickness
