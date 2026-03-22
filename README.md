@@ -4,16 +4,16 @@
 
 ![Lucide Icons for AvaloniaUI](https://raw.githubusercontent.com/MarwanFr/LucideAvaloniaUI/main/image/Banner.webp)
 
-## Over 1480 icons for AvaloniaUI
+## Over 1700 icons for AvaloniaUI
 
 ### What is it?
 
-**Lucide Icons for AvaloniaUI** is a library that allows you to integrate over 1400 modern and elegant icons into your AvaloniaUI projects. This library offers a wide range of icons to enhance the user interface of your applications.
+**Lucide Icons for AvaloniaUI** is a library that allows you to integrate over 1700 modern and elegant icons into your AvaloniaUI projects. This library offers a wide range of icons to enhance the user interface of your applications. Icons are sourced from [Lucide v0.577.0](https://github.com/lucide-icons/lucide/releases/tag/0.577.0).
 
 ### What is it for?
 
 This library is ideal for:
-- Extensive Collection: Access to over 1400 high-quality icons.
+- Extensive Collection: Access to over 1700 high-quality icons.
 - Scalability: Icons are vector-based, ensuring they look sharp at any size.
 - Ease of Use: Simple integration with AvaloniaUI projects.
 - Open Source: Free to use and modify, fostering community collaboration and improvement.
@@ -48,6 +48,16 @@ You can customize the appearance of the icons using various properties:
 - StrokeBrush: Defines the color of the icon stroke.
 - StrokeThickness: Sets the thickness of the icon stroke.
 - Width and Height: Adjust the size of the icon.
+
+### Updating Icons
+
+To regenerate icons from a newer Lucide release, run the included Python script (requires Python 3.10+, no external dependencies):
+
+```sh
+python tools/generate_icons.py --version <lucide-version>
+```
+
+This downloads the Lucide SVGs and regenerates both `LucideAvalonia/Enum/LucideIconNames.cs` and `LucideAvalonia/Lucide/ResourcesIcons.axaml`.
 
 ### Contribution
 

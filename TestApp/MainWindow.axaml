@@ -1,0 +1,7 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="TestApp.MainWindow"
+        Title="Lucide Icons Test" Width="900" Height="700"
+        Background="#1e1e2e">
+    <ScrollViewer x:Name="Scroller" />
+</Window>
