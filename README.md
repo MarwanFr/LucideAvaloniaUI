@@ -63,6 +63,31 @@ This downloads the Lucide SVGs and regenerates both `LucideAvalonia/Enum/LucideI
 
 We welcome contributions from the community to help improve and expand this library. If you encounter any issues or have suggestions, please open an issue or submit a pull request on our GitHub repository.
 
+### Contributors
+
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/MarwanFr">
+        <img src="https://github.com/MarwanFr.png" width="100;" alt="MarwanFr"/><br />
+        <sub><b>MarwanFr</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/Reimnop">
+        <img src="https://github.com/Reimnop.png" width="100;" alt="Reimnop"/><br />
+        <sub><b>Reimnop</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/seltzdesign">
+        <img src="https://github.com/seltzdesign.png" width="100;" alt="seltzdesign"/><br />
+        <sub><b>seltzdesign</b></sub>
+      </a>
+    </td>
+  </tr>
+</table>
+
 ### Credit
 This project is made possible thanks to the following:
 
