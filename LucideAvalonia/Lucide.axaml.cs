@@ -79,7 +79,13 @@ public partial class Lucide : UserControl
         base.OnPropertyChanged(change);
 
         // Check which property has changed and call the appropriate update method
-        if (change.Property == StrokeBrushProperty)
+        if (change.Property == IconProperty)
+        {
+            var resource = Resources.MergedDictionaries.FirstOrDefault() as ResourceDictionary;
+            if (resource != null && change.NewValue is LucideIconNames iconName)
+                IconSource = resource[iconName.ToString()];
+        }
+        else if (change.Property == StrokeBrushProperty)
             UpdateStrokeBrush();
         else if (change.Property == StrokeThicknessProperty) UpdateStrokeThickness();
     }
