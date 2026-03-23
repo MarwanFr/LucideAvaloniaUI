@@ -1,4 +1,7 @@
+using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Templates;
+using Avalonia.Data;
 using Avalonia.Layout;
 using Avalonia.Media;
 using LucideAvalonia;
@@ -16,10 +19,17 @@ public partial class MainWindow : Window
 
     private void BuildIconGrid()
     {
-        var root = new StackPanel { Margin = new Avalonia.Thickness(24), Spacing = 24 };
+        var root = new StackPanel { Margin = new Thickness(24), Spacing = 24 };
 
-        // OLD ICONS — these exist in the original repo
-        var oldIcons = new (LucideIconNames icon, string color)[]
+        // === SECTION 1: Interactive icon picker ===
+        root.Children.Add(MakeHeader("ICON PICKER", "#a6e3a1"));
+        root.Children.Add(MakeSubheader("Icon property supports data binding — select any icon from the dropdown"));
+        root.Children.Add(MakeInteractiveDemo());
+
+        root.Children.Add(MakeSeparator());
+
+        // === SECTION 2: Sample icons ===
+        var sampleIcons = new (LucideIconNames icon, string color)[]
         {
             (LucideIconNames.ArrowUp, "#cdd6f4"),
             (LucideIconNames.Heart, "#f38ba8"),
@@ -30,49 +40,107 @@ public partial class MainWindow : Window
             (LucideIconNames.Sun, "#f9e2af"),
             (LucideIconNames.Moon, "#89b4fa"),
             (LucideIconNames.Trash2, "#f38ba8"),
-            (LucideIconNames.Youtube, "#f38ba8"),
             (LucideIconNames.Camera, "#cdd6f4"),
             (LucideIconNames.Music, "#a6e3a1"),
             (LucideIconNames.Zap, "#f9e2af"),
             (LucideIconNames.Wifi, "#89b4fa"),
             (LucideIconNames.Globe, "#89dceb"),
-            (LucideIconNames.Dice3, "#cdd6f4"),
         };
 
-        // NEW ICONS — only in v0.577.0, will be missing with old library
+        root.Children.Add(MakeHeader("SAMPLE ICONS", "#89b4fa"));
+        root.Children.Add(MakeIconRow(sampleIcons));
+
+        root.Children.Add(MakeSeparator());
+
+        // === SECTION 3: New icons from v0.577.0 ===
         var newIcons = new (LucideIconNames icon, string color)[]
         {
             (LucideIconNames.Balloon, "#f38ba8"),
             (LucideIconNames.ChessKing, "#cdd6f4"),
             (LucideIconNames.ChessQueen, "#cba6f7"),
             (LucideIconNames.ChessKnight, "#89b4fa"),
-            (LucideIconNames.ChessRook, "#f9e2af"),
             (LucideIconNames.Drone, "#a6e3a1"),
             (LucideIconNames.Helicopter, "#89dceb"),
             (LucideIconNames.Panda, "#cdd6f4"),
             (LucideIconNames.Shrimp, "#fab387"),
             (LucideIconNames.Volleyball, "#f9e2af"),
-            (LucideIconNames.Motorbike, "#f38ba8"),
             (LucideIconNames.SolarPanel, "#a6e3a1"),
             (LucideIconNames.Turntable, "#cba6f7"),
-            (LucideIconNames.Gpu, "#89b4fa"),
-            (LucideIconNames.BowArrow, "#fab387"),
             (LucideIconNames.Rose, "#f38ba8"),
-            (LucideIconNames.Scooter, "#89dceb"),
-            (LucideIconNames.Spotlight, "#f9e2af"),
             (LucideIconNames.Metronome, "#a6e3a1"),
             (LucideIconNames.Kayak, "#89b4fa"),
         };
 
-        root.Children.Add(MakeHeader("OLD ICONS (should work with both old and new library)", "#a6adc8"));
-        root.Children.Add(MakeIconRow(oldIcons));
-
-        root.Children.Add(new Border { Height = 1, Background = new SolidColorBrush(Color.Parse("#313244")) });
-
-        root.Children.Add(MakeHeader("NEW ICONS (v0.577.0 — will be missing with old library)", "#a6e3a1"));
+        root.Children.Add(MakeHeader("NEW ICONS (v0.577.0)", "#a6e3a1"));
         root.Children.Add(MakeIconRow(newIcons));
 
         Scroller.Content = root;
+    }
+
+    private static Control MakeInteractiveDemo()
+    {
+        var allIcons = System.Enum.GetValues<LucideIconNames>();
+        var comboBox = new ComboBox
+        {
+            ItemsSource = allIcons,
+            SelectedIndex = Array.IndexOf(allIcons, LucideIconNames.Rocket),
+            Width = 200,
+            Foreground = new SolidColorBrush(Color.Parse("#cdd6f4")),
+            Background = new SolidColorBrush(Color.Parse("#313244")),
+        };
+
+        var slider = new Slider
+        {
+            Minimum = 0.5,
+            Maximum = 1.5,
+            Value = 1,
+            Width = 200,
+            Foreground = new SolidColorBrush(Color.Parse("#89b4fa")),
+        };
+
+        var lucide = new Lucide
+        {
+            Width = 64,
+            Height = 64,
+            StrokeBrush = new SolidColorBrush(Color.Parse("#cdd6f4")),
+            HorizontalAlignment = HorizontalAlignment.Center,
+            [!Lucide.IconProperty] = new Binding("SelectedItem") { Source = comboBox },
+            [!Lucide.StrokeThicknessProperty] = new Binding("Value") { Source = slider },
+        };
+
+        var nameLabel = new TextBlock
+        {
+            FontSize = 14,
+            Foreground = new SolidColorBrush(Color.Parse("#a6adc8")),
+            HorizontalAlignment = HorizontalAlignment.Center,
+            [!TextBlock.TextProperty] = new Binding("SelectedItem") { Source = comboBox }
+        };
+
+        var controls = new StackPanel
+        {
+            Orientation = Orientation.Horizontal,
+            Spacing = 16,
+            HorizontalAlignment = HorizontalAlignment.Center,
+            Children =
+            {
+                comboBox,
+                new TextBlock
+                {
+                    Text = "Thickness",
+                    Foreground = new SolidColorBrush(Color.Parse("#6c7086")),
+                    FontSize = 12,
+                    VerticalAlignment = VerticalAlignment.Center,
+                },
+                slider,
+            }
+        };
+
+        return new StackPanel
+        {
+            Spacing = 16,
+            HorizontalAlignment = HorizontalAlignment.Center,
+            Children = { controls, lucide, nameLabel }
+        };
     }
 
     private static TextBlock MakeHeader(string text, string color) =>
@@ -83,6 +151,18 @@ public partial class MainWindow : Window
             FontSize = 16,
             FontWeight = FontWeight.Bold,
         };
+
+    private static TextBlock MakeSubheader(string text) =>
+        new()
+        {
+            Text = text,
+            Foreground = new SolidColorBrush(Color.Parse("#6c7086")),
+            FontSize = 12,
+            Margin = new Thickness(0, -16, 0, 0),
+        };
+
+    private static Border MakeSeparator() =>
+        new() { Height = 1, Background = new SolidColorBrush(Color.Parse("#313244")), Margin = new Thickness(0, 8) };
 
     private static WrapPanel MakeIconRow((LucideIconNames icon, string color)[] icons)
     {
@@ -108,7 +188,7 @@ public partial class MainWindow : Window
 
             var stack = new StackPanel
             {
-                Margin = new Avalonia.Thickness(8),
+                Margin = new Thickness(8),
                 Spacing = 4,
                 Width = 90,
                 HorizontalAlignment = HorizontalAlignment.Center,

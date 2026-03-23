@@ -37,13 +37,7 @@ public partial class Lucide : UserControl
     public LucideIconNames Icon
     {
         get => GetValue(IconProperty);
-        set
-        {
-            SetValue(IconProperty, value);
-            // Retrieve the resource corresponding to the icon name if resources are defined
-            var resource = Resources.MergedDictionaries.FirstOrDefault() as ResourceDictionary;
-            IconSource = resource?[Icon.ToString()];
-        }
+        set => SetValue(IconProperty, value);
     }
 
     // Property for setting the icon stroke brush
@@ -66,11 +60,7 @@ public partial class Lucide : UserControl
     public double StrokeThickness
     {
         get => GetValue(StrokeThicknessProperty);
-        set
-        {
-            SetValue(StrokeThicknessProperty, value);
-            UpdateStrokeThickness();
-        }
+        set => SetValue(StrokeThicknessProperty, value);
     }
 
     // Override the OnPropertyChanged method to handle property changes
@@ -83,7 +73,14 @@ public partial class Lucide : UserControl
         {
             var resource = Resources.MergedDictionaries.FirstOrDefault() as ResourceDictionary;
             if (resource != null && change.NewValue is LucideIconNames iconName)
+            {
                 IconSource = resource[iconName.ToString()];
+                // Re-apply stroke properties to the new DrawingImage (only if explicitly set)
+                if (StrokeBrush != null)
+                    UpdateStrokeBrush();
+                if (StrokeThickness > 0)
+                    UpdateStrokeThickness();
+            }
         }
         else if (change.Property == StrokeBrushProperty)
             UpdateStrokeBrush();
