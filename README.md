@@ -4,16 +4,16 @@
 
 ![Lucide Icons for AvaloniaUI](https://raw.githubusercontent.com/MarwanFr/LucideAvaloniaUI/main/image/Banner.webp)
 
-## Over 1700 icons for AvaloniaUI
+## Over 1690 icons for AvaloniaUI
 
 ### What is it?
 
-**Lucide Icons for AvaloniaUI** is a library that allows you to integrate over 1700 modern and elegant icons into your AvaloniaUI projects. This library offers a wide range of icons to enhance the user interface of your applications. Icons are sourced from [Lucide v0.577.0](https://github.com/lucide-icons/lucide/releases/tag/0.577.0).
+**Lucide Icons for AvaloniaUI** is a library that allows you to integrate over 1690 modern and elegant icons into your AvaloniaUI projects. This library offers a wide range of icons to enhance the user interface of your applications. Icons are sourced from [Lucide v1.7.0](https://github.com/lucide-icons/lucide/releases/tag/1.7.0).
 
 ### What is it for?
 
 This library is ideal for:
-- Extensive Collection: Access to over 1700 high-quality icons.
+- Extensive Collection: Access to over 1690 high-quality icons.
 - Scalability: Icons are vector-based, ensuring they look sharp at any size.
 - Ease of Use: Simple integration with AvaloniaUI projects.
 - Open Source: Free to use and modify, fostering community collaboration and improvement.
@@ -36,10 +36,10 @@ To use the Lucide Icons in your AvaloniaUI project, add the following namespace 
 xmlns:lucideAvalonia="clr-namespace:LucideAvalonia;assembly=LucideAvalonia"
 ```
 
-Integrating Lucide Icons into your AvaloniaUI project is straightforward. Below is an example demonstrating how to add a YouTube icon to your AXAML file:
+Integrating Lucide Icons into your AvaloniaUI project is straightforward. Below is an example demonstrating how to add a Heart icon to your AXAML file:
 
 ```axaml
-<lucideAvalonia:Lucide Icon="Youtube" StrokeBrush="Red" StrokeThickness="1.5" Width="22" Height="22"/>
+<lucideAvalonia:Lucide Icon="Heart" StrokeBrush="Red" StrokeThickness="1.5" Width="22" Height="22"/>
 ```
 
 You can customize the appearance of the icons using various properties:
