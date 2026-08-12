@@ -21,7 +21,7 @@ This library is ideal for:
 ### Installation
 
 > [!WARNING]
-> This library is compatible only with AvaloniaUI version 11.1.0-beta1 or higher. It does not support earlier versions.
+> This library is compatible with AvaloniaUI version 12.0.0 or higher. For AvaloniaUI 11.x, use LucideAvalonia version 1.6.2 or earlier.
 
 To install the library, you can use NuGet with the following command:
 
